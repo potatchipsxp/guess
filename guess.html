@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Guess</title>
+    </head>
+    <body>
+        <h1>Bet you cant guess my number</h1>
+        <div>
+            <p>Go on, Guess!</p>
+            <script type="text/javascript">
+                var mynum;
+                var player_guess;
+                var usednums = [];
+                var hits = 0;
+
+                function checkguess(player_guess) {
+                    for (var i = usednums.length - 1; i >= 0; i--) {
+                        if (usednums[i] == player_guess) 
+                            return true;
+                    }
+                    return false;
+                }
+                function checkstupidguess(player_guess) {
+                    for (var i = usednums.length - 1; i >= 0; i--) {
+                        if (usednums[i] == player_guess) 
+                            return true;
+                    }
+                    return false;
+                }
+                function checkcorrectguess(player_guess) {
+                    if (mynum == player_guess) {return true;}
+                    else {return false;}
+                }
+                
+                function Pickanewnumber() {
+                    Random generator = new Random(); 
+                    while (true) {
+                    int i = generator.nextInt(4);
+                        if (checkguess(i) == false) {
+                            mynum = i;
+                            usednums.push(i);
+                            if (usednums.length()>3) {
+                                usednums.shift();
+                            }
+                        }
+                    }
+                }
+
+                function test() {
+                    Random generator = new Random(); 
+                    mynum = generator.nextInt(4);
+                    alert(mynum);
+                }
+                function turn(player_guess){
+                    if (checkcorrectguess == true) {
+                        alert("you got it!");
+                        ++hits;
+                        if (hits>9) {
+                            alert("you win");
+                        }
+                    }
+                    else if (checkstupidguess == true) {
+                        alert("bad guess");
+                        alert("my number was...");
+                        alert(mynum);
+                    }
+                    else {
+                        alert("good guess but no, the number was");
+                        alert(mynum);
+                    }
+                    Pickanewnumber();
+                }
+
+            </script>
+            <form onsubmit= "return turn()" method="post">
+                <textarea name="playerguess" rows="1" cols="5"></textarea><br>
+                <input type="submit"    value="submit guess" size="24" />
+            </form>
+        </div>
+    </body>
+</html>
