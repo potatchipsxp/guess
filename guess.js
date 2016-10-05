@@ -38,7 +38,7 @@ function checkcorrectguess(player_guess) {
 function Pickanewnumber() {
     while (true) {
         i = getRandomInt(0,4);
-        if (checkguess(i) == false) {
+        if (checkstupidguess(i) == false) {
             mynum = i;
             usednums.push(i);
             if (usednums.length() > 3) {
