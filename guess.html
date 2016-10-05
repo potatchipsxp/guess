@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Guess</title>
-        <script src="guess.js"></script>
-    </head>
-    <body>
-        <h1>Bet you cant guess my number</h1>
-        <div>
-            <p>Go on, Guess!</p>
-            <form onsubmit= "return turn()" method="post">
-                <textarea name="playerguess" rows="1" cols="5"></textarea><br>
-                <input type="submit"    value="submit guess" size="24" />
-            </form>
-        </div>
-    </body>
+
+<head>
+    <title>Guess</title>
+    <script src="guess.js"></script>
+</head>
+
+<body>
+    <h1>Bet you cant guess my number</h1>
+    <div>
+        <p>Go on, Guess!</p>
+        <textarea id="playerguess" rows="1" cols="5"></textarea>
+        <br>
+        <button onclick="turn()">Submit guess</button>
+    </div>
+</body>
+
 </html>

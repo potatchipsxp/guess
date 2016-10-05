@@ -1,4 +1,4 @@
-var mynum;
+var mynum = 1;
 var player_guess;
 var usednums = [];
 var hits = 0;
@@ -37,30 +37,33 @@ function checkcorrectguess(player_guess) {
 
 function Pickanewnumber() {
     while (true) {
+        console.log(usednums);
         i = getRandomInt(0,4);
         if (checkstupidguess(i) == false) {
             mynum = i;
             usednums.push(i);
-            if (usednums.length() > 3) {
+            if (usednums.length > 3) {
                 usednums.shift();
             }
+            break;
         }
     }
 }
 
-function turn(player_guess) {
-    if (checkcorrectguess == true) {
+function turn() {
+    var guess = document.getElementById("playerguess").value;
+    if (checkcorrectguess(guess) == true) {
         alert("you got it!");
         ++hits;
         if (hits > 9) {
             alert("you win");
         }
-    } else if (checkstupidguess == true) {
+    } else if (checkstupidguess(guess) == true) {
         alert("bad guess");
         alert("my number was...");
         alert(mynum);
     } else {
-        alert("good guess but no, the number was" + mynum);
+        alert("good guess but no, the number was " + mynum);
     }
     Pickanewnumber();
 }
