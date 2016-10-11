@@ -36,6 +36,7 @@ function checkcorrectguess(player_guess) {
 }
 
 function Pickanewnumber() {
+    alert("called pick function");
     while (true) {
         console.log(usednums);
         i = getRandomInt(0,4);
@@ -48,6 +49,7 @@ function Pickanewnumber() {
             break;
         }
     }
+    alert("got out of the loop");
 }
 
 function turn() {
@@ -59,11 +61,10 @@ function turn() {
             alert("you win");
         }
     } else if (checkstupidguess(guess) == true) {
-        alert("bad guess");
-        alert("my number was...");
-        alert(mynum);
+        alert("bad guess, my number was..." + mynum);
     } else {
         alert("good guess but no, the number was " + mynum);
     }
     Pickanewnumber();
+    alert("made it tall the way to the end");
 }
