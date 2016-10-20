@@ -10,20 +10,14 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
 }
-
-function checkguess(player_guess) {
-    for (var i = usednums.length - 1; i >= 0; i--) {
-        if (usednums[i] == player_guess)
-            return true;
-    }
-    return false;
-}
-
 function checkstupidguess(player_guess) {
     for (var i = usednums.length - 1; i >= 0; i--) {
         if (usednums[i] == player_guess)
             return true;
+            console.log("checkstupidguess returned true");
     }
+
+    console.log("checkstupidguess returned true");
     return false;
 }
 
@@ -36,20 +30,25 @@ function checkcorrectguess(player_guess) {
 }
 
 function Pickanewnumber() {
-    alert("called pick function");
+    //alert("called pick function");
+    console.log("called pick function");
     while (true) {
         console.log(usednums);
         i = getRandomInt(0,4);
         if (checkstupidguess(i) == false) {
             mynum = i;
+            console.log("mynum set to" + mynum);
             usednums.push(i);
+            console.log("usednums set to" + usednums);
             if (usednums.length > 3) {
                 usednums.shift();
+                console.log("usednums shifted to" + usednums);
             }
             break;
         }
     }
-    alert("got out of the loop");
+    console.log("got out of the loop");
+    //alert("got out of the loop");
 }
 
 function turn() {
@@ -66,5 +65,6 @@ function turn() {
         alert("good guess but no, the number was " + mynum);
     }
     Pickanewnumber();
-    alert("made it tall the way to the end");
+    console.log("made it tall the way to the end");
+    //alert("made it tall the way to the end");
 }
