@@ -15,7 +15,7 @@ function getRandomInt(min, max) {
 
 
 //checks to see if the player guess was one of the used numbers
-function checkStupidGuess(player_guess) {
+function checkAlreadyUsed(player_guess) {
     for (var i = usednums.length - 1; i >= 0; i--) {
         if (usednums[i] == player_guess)
             return true;
@@ -48,9 +48,10 @@ function pickNewNumber() {
     */
     while (true) {
         console.log(usednums);
-        i = getRandomInt(0,4);
+
+        i = getRandomInt(0,5);
         //use the check stupid guess function to if number is already used
-        if (checkStupidGuess(i) == false) {
+        if (checkAlreadyUsed(i) == false) {
             mynum = i;
             //generated number was good so we assign it to comps number
             console.log("mynum set to" + mynum);
@@ -72,6 +73,7 @@ function pickNewNumber() {
 }
 
 function turn() {
+    pickNewNumber();
     var guess = document.getElementById("playerguess").value;
     if (checkCorrectGuess(guess) == true) {
         alert("you got it!");
@@ -79,12 +81,12 @@ function turn() {
         if (hits > 9) {
             alert("you win");
         }
-    } else if (checkStupidGuess(guess) == true) {
+    } else if (checkAlreadyUsed(guess) == true) {
         alert("bad guess, my number was..." + mynum);
     } else {
         alert("good guess but no, the number was " + mynum);
     }
-    pickNewNumber();
     console.log("made it tall the way to the end");
     //alert("made it tall the way to the end");
+    
 }
